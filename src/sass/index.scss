@@ -1,2 +1,33 @@
 @import './common';
 @import './example';
+
+.header-form {
+  background-color: aquamarine;
+  padding: 15px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  background-color: skyblue;
+  padding: 15px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  padding: 10px;
+  border-radius: 50px;
+  margin-left: 15px;
+  border: none;
+  background-color: slateblue;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: coral;
+}
