@@ -17,6 +17,7 @@ refs.loadMoreButtonEl.style.visibility = 'hidden';
 
 let searchQueryEl = refs.form.elements.searchQuery;
 let searchInput = '';
+let pageNumber = 1;
 
 function onSubmitButton(e) {
   e.preventDefault();
