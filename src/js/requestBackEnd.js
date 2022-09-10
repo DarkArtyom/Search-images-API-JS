@@ -19,7 +19,7 @@ function fetchImages(searchName) {
         loadMoreButtonEl.style.visibility = 'hidden';
         return;
       }
-      console.log(response.data.hits);
+      console.log(response.data);
       pageNumber = pageNumber + 1;
       return response.data.hits;
     })

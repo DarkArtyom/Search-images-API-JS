@@ -26,13 +26,13 @@ function renderImg(data) {
             <b>Comments: ${comments}</b>
           </p>
           <p class="info-item">
-            <b>Downloads:${downloads}</b>
+            <b>Downloads: ${downloads}</b>
           </p>
         </div>
       </div></a>`;
     dataArr.push(photoCards);
   }
-  galleryDiv.insertAdjacentHTML('beforeend', dataArr);
+  galleryDiv.insertAdjacentHTML('beforeend', dataArr.join(''));
   galleryDiv.style.display = 'flex';
   galleryDiv.style.justifyContent = 'center';
   galleryDiv.style.flexWrap = 'wrap';

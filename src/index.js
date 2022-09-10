@@ -45,7 +45,10 @@ function onLoadMore() {
   API.fetchImages(searchInput)
     .then(RENDER.renderImg)
     .then(simpleLightBox)
-    .then(lightScroll);
+    .then(lightScroll)
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
 function clearContainer() {
