@@ -15,7 +15,7 @@ function renderImg(data) {
     comments,
     downloads,
   } of data) {
-    const photoCards = `<div class="photo-card"><a href="${largeImageURL}"><img src="${webformatURL}" width="300" height="200" alt="${tags}" loading="lazy" /></a>
+    const photoCards = `<a href="${largeImageURL}"><div class="photo-card"><img src="${webformatURL}" width="300" height="200" alt="${tags}" loading="lazy" />
         <div class="info">
           <p class="info-item">
             <b>Likes: ${likes}</b>
@@ -30,7 +30,7 @@ function renderImg(data) {
             <b>Downloads:${downloads}</b>
           </p>
         </div>
-      </div>`;
+      </div></a>`;
     dataArr.push(photoCards);
   }
   galleryDiv.insertAdjacentHTML('beforeend', dataArr);

@@ -20,14 +20,40 @@
 }
 
 .button {
-  padding: 10px;
-  border-radius: 50px;
-  margin-left: 15px;
-  border: none;
-  background-color: slateblue;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-image: linear-gradient(
+    to right,
+    #9eefe1 0%,
+    #4830f0 51%,
+    #9eefe1 100%
+  );
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: coral;
+  background-position: right center;
+  // background-color: coral;
+}
+
+.input-form {
+  padding: 5;
+  line-height: 30px;
+  background: #faab1b;
+  border-width: 0;
+  border-radius: 10px;
+}
+
+h2 {
+  text-align: center;
 }
