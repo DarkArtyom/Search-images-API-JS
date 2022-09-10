@@ -3,7 +3,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const KEY = '29789074-1225e0ee7727dd30a4d9fda5f';
 const URL = 'https://pixabay.com/api/';
-
+const loadMoreButtonEl = document.querySelector('.load-more-button');
 let pageNumber = 1;
 
 function fetchImages(searchName) {
@@ -16,6 +16,7 @@ function fetchImages(searchName) {
         Notify.info(
           'Sorry, there are no images matching your search query. Please try again.'
         );
+        loadMoreButtonEl.style.visibility = 'hidden';
         return;
       }
       console.log(response.data.hits);
