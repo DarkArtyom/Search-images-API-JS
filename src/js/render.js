@@ -1,5 +1,4 @@
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
+// import SimpleLightbox from 'simplelightbox';
 
 const galleryDiv = document.querySelector('.gallery');
 

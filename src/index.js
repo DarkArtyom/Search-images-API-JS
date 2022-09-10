@@ -1,4 +1,5 @@
 import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import RENDER from './js/render';
 import API from './js/requestBackEnd';
@@ -31,10 +32,8 @@ function onSubmitButton(e) {
     .then(function () {
       refs.loadMoreButtonEl.style.visibility = 'visible';
     })
-    .then(function () {
-      let gallery = new SimpleLightbox('.gallery a');
-      gallery.on('show.simplelightbox');
-    });
+    .then(simpleLightBox)
+    .then(lightScroll);
 }
 
 function resetPage() {
@@ -44,12 +43,25 @@ function resetPage() {
 function onLoadMore() {
   API.fetchImages(searchInput)
     .then(RENDER.renderImg)
-    .then(function () {
-      let gallery = new SimpleLightbox('.gallery a');
-      gallery.refresh('show.simplelightbox');
-    });
+    .then(simpleLightBox)
+    .then(lightScroll);
 }
 
 function clearContainer() {
   refs.galleryDiv.innerHTML = '';
+}
+
+function lightScroll() {
+  const { height: cardHeight } = document
+    .querySelector('.gallery')
+    .firstElementChild.getBoundingClientRect();
+  window.scrollBy({
+    top: cardHeight * 6,
+    behavior: 'smooth',
+  });
+}
+
+function simpleLightBox() {
+  let gallery = new SimpleLightbox('.gallery a');
+  gallery.refresh('show.simplelightbox');
 }

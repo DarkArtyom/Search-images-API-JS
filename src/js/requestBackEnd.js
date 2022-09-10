@@ -18,7 +18,7 @@ function fetchImages(searchName) {
         );
         return;
       }
-      console.log(response.data);
+      console.log(response.data.hits);
       pageNumber = pageNumber + 1;
       return response.data.hits;
     })
