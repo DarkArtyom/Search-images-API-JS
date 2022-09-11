@@ -6,17 +6,16 @@ const URL = 'https://pixabay.com/api/';
 const loadMoreButtonEl = document.querySelector('.load-more-button');
 let pageNumber = 1;
 
-function fetchImages(searchName) {
-  const findImage = axios
-    .get(
+async function fetchImages(searchName) {
+  try {
+    const findImage = await axios.get(
       `${URL}/?key=${KEY}&q=${searchName}&orientation=horizontal&safesearch=true&image_type=photo&page=${pageNumber}&per_page=40`
-    )
-    .then(responseData)
-    .catch(function (error) {
-      console.log(error);
-    });
-
-  return findImage;
+    );
+    const responsing = await responseData(findImage);
+    return responsing;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function responseData(response) {
