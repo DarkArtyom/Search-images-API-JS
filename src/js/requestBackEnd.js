@@ -11,23 +11,30 @@ function fetchImages(searchName) {
     .get(
       `${URL}/?key=${KEY}&q=${searchName}&orientation=horizontal&safesearch=true&image_type=photo&page=${pageNumber}&per_page=40`
     )
-    .then(function (response) {
-      if (response.data.total === 0) {
-        Notify.info(
-          'Sorry, there are no images matching your search query. Please try again.'
-        );
-        loadMoreButtonEl.style.visibility = 'hidden';
-        return;
-      }
-      console.log(response.data);
-      pageNumber = pageNumber + 1;
-      return response.data.hits;
-    })
+    .then(responseData)
     .catch(function (error) {
       console.log(error);
     });
 
   return findImage;
+}
+
+function responseData(response) {
+  if (response.data.total === 0 || response.data.hits.length === 0) {
+    Notify.info(
+      'Sorry, there are no images matching your search query. Please try again.'
+    );
+    loadMoreButtonEl.style.visibility = 'hidden';
+    return;
+  }
+  if (response.data.hits.length < 40) {
+    loadMoreButtonEl.style.visibility = 'hidden';
+  } else {
+    loadMoreButtonEl.style.visibility = 'visible';
+  }
+  console.log(response.data);
+  pageNumber = pageNumber + 1;
+  return response.data.hits;
 }
 
 export default { fetchImages };
