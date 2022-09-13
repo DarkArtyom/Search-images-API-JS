@@ -17,6 +17,7 @@ refs.loadMoreButtonEl.style.visibility = 'hidden';
 
 let searchQueryEl = refs.form.elements.searchQuery;
 let searchInput = '';
+
 let pageNumber = 1;
 
 function onSubmitButton(e) {
@@ -28,7 +29,17 @@ function onSubmitButton(e) {
   }
   clearContainer();
   resetPage();
-  API.fetchImages(searchInput)
+  API.fetchImages(searchInput, pageNumber)
+    .then(RENDER.renderImg)
+    .then(simpleLightBox)
+    .then(lightScroll)
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
+function onLoadMore() {
+  API.fetchImages(searchInput, (pageNumber += 1))
     .then(RENDER.renderImg)
     .then(simpleLightBox)
     .then(lightScroll)
@@ -39,16 +50,6 @@ function onSubmitButton(e) {
 
 function resetPage() {
   pageNumber = 1;
-}
-
-function onLoadMore() {
-  API.fetchImages(searchInput)
-    .then(RENDER.renderImg)
-    .then(simpleLightBox)
-    .then(lightScroll)
-    .catch(function (error) {
-      console.log(error);
-    });
 }
 
 function clearContainer() {
